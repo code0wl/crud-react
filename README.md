@@ -1,7 +1,3 @@
-## Close.io acceptance exam
-
-This exam was to show if Oscar Lodriguez would be able to perform at Close.io's quality standards.
-
 #### Start the project locally with
 `npm start`
 
