@@ -1,0 +1,39 @@
+.icon {
+    height: 2rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 1.8rem;
+    margin: 1rem;
+    background-color: white;
+    color: @info;
+    right: 0;
+    z-index: 11;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: @info;
+    }
+
+    &.list {
+        background-image: url('../../assets/location-blue.png');
+        background-size: contain;
+
+        &:hover {
+            background-image: url('../../assets/location.png');
+        }
+    }
+
+    &.add {
+        background-image: url('../../assets/user-blue.png');
+        background-size: 80%;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &:hover {
+            background-image: url('../../assets/user-white.png');
+        }
+    }
+
+}

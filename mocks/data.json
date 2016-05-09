@@ -1,0 +1,58 @@
+[
+    {
+        "id": 0,
+        "type": "home",
+        "position": {
+            "lat": 44.1419049,
+            "lon": -120.5380992
+        },
+        "picture": "http://lorempixel.com/40/40/",
+        "name": {
+            "first": "Wise",
+            "last": "Munoz"
+        },
+        "address": "108 Quay Street, Elbert, Oregon, 8267"
+    },
+    {
+        "id": 1,
+        "type": "home",
+        "position": {
+            "lat": 38.4987789,
+            "lon": -98.3200779
+        },
+        "picture": "http://lorempixel.com/40/40/",
+        "name": {
+            "first": "Violet",
+            "last": "Thornton"
+        },
+        "address": "885 Beaumont Street, Bayview, Kansas, 9534"
+    },
+    {
+        "id": 3,
+        "position": {
+            "lat": 52.520645,
+            "lon": 13.409779
+        },
+        "type": "business",
+        "picture": "http://lorempixel.com/40/40/",
+        "name": {
+            "first": "Gould",
+            "last": "Branch"
+        },
+        "address": "Berlin cental"
+    },
+    {
+        "id": 2,
+        "position": {
+            "lat": 20.46,
+            "lon": -157.505
+        },
+        "type": "business",
+        "picture": "http://lorempixel.com/40/40/",
+        "name": {
+            "first": "Carla",
+            "last": "Wise"
+        },
+        "address": "572 Girard Street, Tecolotito, Hawaii, 8056"
+    }
+]

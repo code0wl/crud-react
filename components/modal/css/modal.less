@@ -1,0 +1,64 @@
+.modal {
+    padding: 1rem;
+    min-width: 70%;
+    position: relative;
+    overflow: hidden;
+    transition: all 1s ease;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2);
+
+    .total-users {
+        position: absolute;
+        right: -10px;
+        line-height: 20px;
+        top: -10px;
+        height: 20px;
+        color: white;
+        background: #3498DB;
+        font-size: .7rem;
+        border-radius: 50%;
+        width: 20px;
+    }
+
+    .modal-menu {
+        position: absolute;
+        z-index: 11;
+        right: 0;
+        top: 0;
+
+        li {
+            border-radius: 3px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+        }
+
+    }
+
+    .user-view-focussed .user-view,
+    .user-list-focussed .list-view {
+        position: relative;
+        z-index: 10;
+        animation: slide-in-view .7s ease forwards;
+    }
+
+    .user-list-focussed {
+        .list {
+            background-color: #3498DB;
+            background-image: url('../../../assets/location.png');
+            color: white;
+        }
+    }
+
+    .user-view-focussed  {
+        .add {
+            background-color: #3498DB;
+            background-image: url('../../../assets/user-white.png');
+            color: white;
+        }
+    }
+
+    .user-view-focussed .list-view,
+    .user-list-focussed .user-view {
+        position: relative;
+        z-index: 10;
+        animation: slide-out-view .7s ease forwards;
+    }
+}

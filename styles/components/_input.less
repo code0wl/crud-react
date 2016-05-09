@@ -1,0 +1,53 @@
+select,
+input {
+    -webkit-appearance: none;
+    color: #999;
+    background: white;
+    width: 100%;
+    outline: none;
+    padding: .7rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &::selection {
+        color: white;
+        background: @info;
+    }
+
+    &::-moz-selection {
+        color: white;
+        background: @info;
+    }
+
+}
+
+.input-group-select {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 1.7rem;
+        right: .7rem;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #d0d0d0;
+    }
+
+}
+
+select,
+input[placeholder] {
+    font-weight: 100;
+    letter-spacing: .05rem;
+}

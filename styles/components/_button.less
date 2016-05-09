@@ -1,0 +1,38 @@
+.btn {
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
+    border: none;
+    position: relative;
+    outline: none;
+    background: white;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        top:1px;
+    }
+    
+    &.btn-primary {
+        color: @info;
+        border: 1px solid @info;
+        &:hover {
+            color: #fff;
+            background: @info;
+        }
+    }
+
+    &.btn-default {
+        color: darkgray;
+        border: 1px solid darkgray;
+        &:hover {
+            color: #fff;
+            background: darkgray;
+        }
+    }
+
+}
