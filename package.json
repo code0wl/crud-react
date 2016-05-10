@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "npm i -g nodemon && npm i && webpack && nodemon server.js"
+    "start": "npm i && webpack && node ./node_modules/nodemon/bin/nodemon.js server.js"
   },
   "author": "",
   "license": "ISC",
