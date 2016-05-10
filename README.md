@@ -9,7 +9,7 @@ POST/ http://localhost:3000/addresses (creates new item(s))
 PUT/ http://localhost:3000/addresses/id (creates new item(s))
 DELETE/ http://localhost:3000/addresses/id (removes item id, has no interface can be tested with Postman)
 
-PUT and DELETE do not have a user interface. Did not have time to complete assignment for the design, but this works inside of postman or any other REST tester
+PUT does o not have an interface. Did not have time to complete assignment for the design, but this works inside of postman or any other REST tester
 
 #### Delivery
 - Add Address
