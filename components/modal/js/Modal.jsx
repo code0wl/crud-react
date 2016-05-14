@@ -58,7 +58,7 @@ export default class AdressPlotComponent extends Component {
         if (e) {
             const
                 currentTarget = e.currentTarget,
-                coors = [].slice.call(currentTarget.querySelectorAll('small')),
+                coors = currentTarget.querySelector('[data-coors]').getAttribute('data-coors').split(','),
                 lists = [].slice.call(currentTarget.parentElement.querySelectorAll('li'));
 
             lists.map((list) => {
@@ -68,9 +68,9 @@ export default class AdressPlotComponent extends Component {
             currentTarget.classList.add('item-selected');
 
             this.setState({
-                defaultCenterMap: coors.reduce((acc, value) => {
-                    acc.lat = Number(coors[0].textContent);
-                    acc.lon = Number(coors[1].textContent);
+                defaultCenterMap: coors.reduce((acc) => {
+                    acc.lat = Number(coors[1]);
+                    acc.lon = Number(coors[0]);
                     return acc;
                 }, {})
             });

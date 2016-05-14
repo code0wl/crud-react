@@ -9,12 +9,10 @@ export default ({user, setLocation, ra}) => (
             </div>
             <div className="col-8-12--sm">
                 <p>{user.name.first}, {user.name.last}</p>
-                <p className="user-address">{user.address}</p>
-                <small>{user.position.lat}</small>
-                <small>{user.position.lon}</small>
+                <p data-coors={[user.position.lon, user.position.lat]} className="user-address">{user.address}</p>
             </div>
-            <div onClick={ra} className="col-1-12--sm">
-                <p id={user.id} class="remove-address"> X </p>
+            <div className="col-1-12--sm">
+                <p onClick={ra} id={user.id} class="remove-address"> X </p>
             </div>
         </div>
     </li>
