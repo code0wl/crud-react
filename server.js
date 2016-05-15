@@ -65,7 +65,7 @@ app.put('/addresses/:id', (req, res) => {
     let
         addressId = parseInt(req.params.id, 10),
         attributes = {},
-        body = _.pick(req.body, 'name', 'location', 'type', 'address'),
+        body = _.pick(req.body, 'name', 'position', 'type', 'address'),
         matched = _.find(addresses, {id: addressId});
 
     if (!matched) {
@@ -76,8 +76,8 @@ app.put('/addresses/:id', (req, res) => {
         attributes.name = body.name;
     }
 
-    if (body.hasOwnProperty('location')) {
-        attributes.location = body.location;
+    if (body.hasOwnProperty('position')) {
+        attributes.position = body.position;
     }
 
     if (body.hasOwnProperty('type')) {
