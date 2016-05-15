@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import ModalHeader from '../../modal-header/js/ModalHeader';
-import '../css/address-form';
+import React, {Component} from "react";
+import ModalHeader from "../../modal-header/js/ModalHeader";
+import "../css/address-form";
 
 export default class AddressForm extends Component {
 

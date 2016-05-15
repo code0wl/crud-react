@@ -21,11 +21,11 @@ module.exports = {
             template: './templates/partials/address-plot-component.html'
         }),
 
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
 
     ],
 

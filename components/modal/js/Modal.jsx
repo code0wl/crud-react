@@ -2,9 +2,11 @@
 
 import React, {Component} from 'react';
 import {render} from 'react-dom';
+import AddressEditForm from '../../address-form/js/AddressEditForm';
 import AddressForm from '../../address-form/js/AddressForm';
 import AddressList from '../../address-list/js/AddressList';
 import AddressMap from '../../address-map/js/AddressMap';
+import ModalMenu from '../../modal-menu/js/ModalMenu';
 import '../../../styles/main';
 import '../css/modal';
 import 'whatwg-fetch';
@@ -27,6 +29,7 @@ export default class AdressPlotComponent extends Component {
             defaultCenterMap: {lat: 52.3702, lon: 4.8952}
         };
 
+        this.editForm = this.editForm.bind(this);
         this.setListView = this.setListView.bind(this);
         this.setUserView = this.setUserView.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
@@ -54,7 +57,6 @@ export default class AdressPlotComponent extends Component {
     }
 
     selectLocation(e) {
-
         if (e) {
             const
                 currentTarget = e.currentTarget,
@@ -75,6 +77,11 @@ export default class AdressPlotComponent extends Component {
                 }, {})
             });
         }
+    }
+
+    editForm(element) {
+        let id = element.target.id;
+        console.log(id)
     }
 
     removeAddress(element) {
@@ -176,24 +183,27 @@ export default class AdressPlotComponent extends Component {
                     <div className="grid-row">
                         <div className="col-4-12--sm">
                             <div className={inView}>
-                                <ul className="modal-menu">
-                                    <li onClick={this.closeDialog} role="button" className="icon close">x</li>
-                                    <li onClick={this.setUserView} role="button" className="icon add"></li>
-                                    <li onClick={this.setListView} role="button" className="icon list">
-                                        <span className="total-users"> {this.state.users.length} </span>
-                                    </li>
-                                </ul>
+
+                                 <ModalMenu setUserView={this.setUserView} setListView={this.setListView} closeDialog={this.closeDialog} count={this.state.users.length}  />
+
                                 <AddressForm
                                     submit={this.submit}
                                     cancel={this.cancel}
-                                    modalTitle="Add a new user"/>
+                                    modalTitle="Add a new user"
+                                />
 
                                 <AddressList
+                                    editForm={this.editForm}
                                     setLoc={this.selectLocation}
                                     removeAddress={this.removeAddress}
                                     users={this.state.users}
                                     modalTitle="Addresses"
                                 />
+
+                                <AddressEditForm
+                                    modalTitle="Edit Address"
+                                />
+
                             </div>
                         </div>
                         <AddressMap
