@@ -10,6 +10,8 @@ import ModalMenu from '../../modal-menu/js/ModalMenu';
 import '../../../styles/main';
 import 'whatwg-fetch';
 import '../../model/model';
+import NotificationSystem from 'react-notification-system';
+
 import '../css/modal';
 
 export default class AdressPlotComponent extends Component {
@@ -39,6 +41,9 @@ export default class AdressPlotComponent extends Component {
         this.cancel = this.cancel.bind(this);
         this.loadApp = this.loadApp.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
+        this.addNotification = this.addNotification.bind(this);
+        this.notificationSystem = null;
+
     };
 
     loadApp(data) {
@@ -54,6 +59,17 @@ export default class AdressPlotComponent extends Component {
                 }, [])
             }]
         })
+    }
+
+    addNotification() {
+        this.notificationSystem.addNotification({
+            message: `user was added successfully`,
+            level: 'success'
+        });
+    }
+
+    componentDidMount() {
+        this.notificationSystem = this.refs.notificationSystem;
     }
 
     selectLocation(e) {
@@ -99,9 +115,10 @@ export default class AdressPlotComponent extends Component {
                 };
 
             this.updateModel(`/addresses/${this.state.inEdit[0].id}`, 'PUT', user);
-            
+
             d.querySelector('#edit-address').reset();
             d.querySelector('.google-search').value = '';
+            
         }
     };
 
@@ -170,6 +187,8 @@ export default class AdressPlotComponent extends Component {
 
             d.querySelector('#new-address').reset();
             d.querySelector('.google-search').value = '';
+
+            this.addNotification();
         }
     }
 
@@ -252,6 +271,9 @@ export default class AdressPlotComponent extends Component {
 
                             </div>
                         </div>
+
+                        <NotificationSystem ref="notificationSystem" />
+
                         <AddressMap
                             markers={this.state.markers}
                             selectLocation={this.selectLocation}

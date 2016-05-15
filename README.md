@@ -20,6 +20,7 @@ PUT does o not have an interface. Did not have time to complete assignment for t
 - Flexbox grid and styles
 - Shims and polyfills for older browsers
 - Markers
+- Notification system for updating events
 - Animate to position
 - Rich user data
 - Custom design
@@ -28,12 +29,10 @@ PUT does o not have an interface. Did not have time to complete assignment for t
 - Did not get to user test the UI; So, made a video of how it works 
 
 #### On the roadmap
-- Address validation with updating PUT requests
 - Unit tests
 - Continuous Integration
 - Custom input UI for non webkit browsers
 - Code documentation
-- Notification system for updating events
 
 #### Total time spent on exam is 14 hours. 
 - concept and design 4 hours

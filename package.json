@@ -16,6 +16,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-google-maps": "4.7.1",
+    "react-notification-system": "^0.2.7",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
