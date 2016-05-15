@@ -1,16 +1,16 @@
 'use strict';
 
-import React, {Component} from 'react';
-import {render} from 'react-dom';
-import AddressEditForm from '../../address-form/js/AddressEditForm';
-import AddressForm from '../../address-form/js/AddressForm';
-import AddressList from '../../address-list/js/AddressList';
-import AddressMap from '../../address-map/js/AddressMap';
-import ModalMenu from '../../modal-menu/js/ModalMenu';
-import '../../../styles/main';
-import '../css/modal';
-import 'whatwg-fetch';
-import '../../model/model';
+import React, {Component} from "react";
+import {render} from "react-dom";
+import AddressEditForm from "../../address-form/js/AddressEditForm";
+import AddressForm from "../../address-form/js/AddressForm";
+import AddressList from "../../address-list/js/AddressList";
+import AddressMap from "../../address-map/js/AddressMap";
+import ModalMenu from "../../modal-menu/js/ModalMenu";
+import "../../../styles/main";
+import "whatwg-fetch";
+import "../../model/model";
+import "../css/modal";
 
 export default class AdressPlotComponent extends Component {
 
@@ -24,8 +24,7 @@ export default class AdressPlotComponent extends Component {
         this.state = {
             users: [],
             markers: [],
-            userView: true,
-            listView: false,
+            inView: 'user-list-focussed',
             defaultCenterMap: {lat: 52.3702, lon: 4.8952}
         };
 
@@ -35,6 +34,7 @@ export default class AdressPlotComponent extends Component {
         this.closeDialog = this.closeDialog.bind(this);
         this.selectLocation = this.selectLocation.bind(this);
         this.submit = this.submit.bind(this);
+        this.setEditView = this.setEditView.bind(this);
         this.cancel = this.cancel.bind(this);
         this.loadApp = this.loadApp.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
@@ -81,7 +81,9 @@ export default class AdressPlotComponent extends Component {
 
     editForm(element) {
         let id = element.target.id;
-        console.log(id)
+        console.log(id);
+
+        this.setEditView();
     }
 
     removeAddress(element) {
@@ -154,38 +156,44 @@ export default class AdressPlotComponent extends Component {
     cancel(e) {
         e.preventDefault();
         this.setState({
-            userView: false,
-            listView: false
+            inView: 'user-list-focussed'
         });
     }
 
     setListView() {
         this.setState({
-            userView: false,
-            listView: true
+            inView: 'user-list-focussed'
+        });
+    }
+
+    setEditView() {
+        this.setState({
+            inView: 'user-edit-focussed'
         });
     }
 
     setUserView() {
         this.setState({
-            userView: true,
-            listView: false
+            inView: 'user-view-focussed'
         })
     }
 
     render() {
-
-        let inView = this.state.userView ? 'user-view-focussed' : 'user-list-focussed';
 
         return (
             <div className="modal-container">
                 <div className="modal">
                     <div className="grid-row">
                         <div className="col-4-12--sm">
-                            <div className={inView}>
 
-                                 <ModalMenu setUserView={this.setUserView} setListView={this.setListView} closeDialog={this.closeDialog} count={this.state.users.length}  />
+                            <div className={this.state.inView}>
 
+                                <ModalMenu
+                                    setUserView={this.setUserView}
+                                    setListView={this.setListView}
+                                    closeDialog={this.closeDialog}
+                                    count={this.state.users.length}
+                                />
                                 <AddressForm
                                     submit={this.submit}
                                     cancel={this.cancel}

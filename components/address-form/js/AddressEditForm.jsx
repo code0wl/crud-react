@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import ModalHeader from "../../modal-header/js/ModalHeader";
-import "../css/address-form";
+import React, {Component} from 'react';
+import ModalHeader from '../../modal-header/js/ModalHeader';
+import '../css/address-form';
 
 export default class AddressEditForm extends Component {
 
@@ -10,7 +10,7 @@ export default class AddressEditForm extends Component {
 
     render() {
         return (
-            <div className="edit-user-view">
+            <div className="edit-view">
                 <ModalHeader modalTitle={this.props.modalTitle}/>
             </div>
         );

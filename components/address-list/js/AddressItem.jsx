@@ -12,8 +12,10 @@ export default ({user, setLocation, ra, ef}) => (
                 <p data-coors={[user.position.lon, user.position.lat]} className="user-address">{user.address}</p>
             </div>
             <div className="col-1-12--sm">
-                <p onClick={ef} id={user.id} className="edit-address"> ✎ </p>
-                <p onClick={ra} id={user.id} className="remove-address"> X </p>
+                <ul className="meta-data">
+                    <li onClick={ra} id={user.id} className="remove-address"> X </li>
+                    <li onClick={ef} id={user.id} className="edit-address"> ✎ </li>
+                </ul>
             </div>
         </div>
     </li>
