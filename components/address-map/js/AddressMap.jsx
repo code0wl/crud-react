@@ -6,10 +6,6 @@ import '../css/map';
 
 export default class AddressMap extends Component {
 
-    constructor(props) {
-        super();
-    }
-
     componentDidMount() {
         function waitForIt() {
             if (!document.querySelectorAll('.undefined').length) {

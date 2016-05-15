@@ -1,4 +1,8 @@
-export default window.fetchModel = function() {
+export default {
+    fetchModel: window.fetchModel
+}
+
+window.fetchModel = () => {
 
     var myHeaders = new Headers();
 

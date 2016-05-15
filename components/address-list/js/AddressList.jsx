@@ -3,12 +3,13 @@ import AddressItem from './AddressItem';
 import ModalHeader from '../../modal-header/js/ModalHeader';
 import '../css/address-list';
 
-export default ({users, modalTitle, setLoc, removeAddress, editForm}) => {
+export default ({users, modalTitle, setLoc, removeAddress, setEditView}) => {
 
     let userMarkup = [];
 
     users.map((item) => {
-        userMarkup.push(<AddressItem ef={editForm} ra={removeAddress} setLocation={setLoc} user={item} key={userMarkup.length}/>);
+        userMarkup.push(<AddressItem ev={setEditView} ra={removeAddress} setLocation={setLoc} user={item}
+                                     key={userMarkup.length}/>);
     });
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/address-list.less';
 
-export default ({user, setLocation, ra, ef}) => (
+export default ({user, setLocation, ra, ev}) => (
     <li className={user.type} onClick={setLocation}>
         <div className='grid-row'>
             <div className="col-3-12--sm">
@@ -14,7 +14,7 @@ export default ({user, setLocation, ra, ef}) => (
             <div className="col-1-12--sm">
                 <ul className="meta-data">
                     <li onClick={ra} id={user.id} className="remove-address"> X </li>
-                    <li onClick={ef} id={user.id} className="edit-address"> ✎ </li>
+                    <li onClick={ev} id={user.id} className="edit-address"> ✎ </li>
                 </ul>
             </div>
         </div>

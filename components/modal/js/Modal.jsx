@@ -1,16 +1,16 @@
 'use strict';
 
-import React, {Component} from "react";
-import {render} from "react-dom";
-import AddressEditForm from "../../address-form/js/AddressEditForm";
-import AddressForm from "../../address-form/js/AddressForm";
-import AddressList from "../../address-list/js/AddressList";
-import AddressMap from "../../address-map/js/AddressMap";
-import ModalMenu from "../../modal-menu/js/ModalMenu";
-import "../../../styles/main";
-import "whatwg-fetch";
-import "../../model/model";
-import "../css/modal";
+import React, {Component} from 'react';
+import {render} from 'react-dom';
+import AddressEditForm from '../../address-form/js/AddressEditForm';
+import AddressForm from '../../address-form/js/AddressForm';
+import AddressList from '../../address-list/js/AddressList';
+import AddressMap from '../../address-map/js/AddressMap';
+import ModalMenu from '../../modal-menu/js/ModalMenu';
+import '../../../styles/main';
+import 'whatwg-fetch';
+import '../../model/model';
+import '../css/modal';
 
 export default class AdressPlotComponent extends Component {
 
@@ -23,12 +23,13 @@ export default class AdressPlotComponent extends Component {
 
         this.state = {
             users: [],
+            inEdit: false,
             markers: [],
             inView: 'user-list-focussed',
             defaultCenterMap: {lat: 52.3702, lon: 4.8952}
         };
 
-        this.editForm = this.editForm.bind(this);
+        this.editUser = this.editUser.bind(this);
         this.setListView = this.setListView.bind(this);
         this.setUserView = this.setUserView.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
@@ -41,7 +42,6 @@ export default class AdressPlotComponent extends Component {
     };
 
     loadApp(data) {
-        console.log('app ready');
         window.addressModel = data;
 
         this.setState({
@@ -79,12 +79,31 @@ export default class AdressPlotComponent extends Component {
         }
     }
 
-    editForm(element) {
-        let id = element.target.id;
-        console.log(id);
+    editUser(e) {
+        e.preventDefault();
 
-        this.setEditView();
-    }
+        if (window.userLocationBuffer !== undefined) {
+            let
+                d = document,
+                buffer = window.userLocationBuffer[0],
+                lat = buffer.geometry.location.lat(),
+                lon = buffer.geometry.location.lng(),
+                user = {
+                    name: {
+                        first: d.querySelector('#edit-address #user-firstname').value,
+                        last: d.querySelector('#edit-address #user-lastname').value
+                    },
+                    position: {lat, lon},
+                    type: d.querySelector('#edit-address #user-type').value,
+                    address: buffer.formatted_address
+                };
+
+            this.updateModel(`/addresses/${this.state.inEdit[0].id}`, 'PUT', user);
+            
+            d.querySelector('#edit-address').reset();
+            d.querySelector('.google-search').value = '';
+        }
+    };
 
     removeAddress(element) {
 
@@ -103,16 +122,17 @@ export default class AdressPlotComponent extends Component {
         });
     }
 
-    updateModel(model) {
-        fetch('/addresses/', {
-            method: 'POST',
+    updateModel(url, method, data) {
+        fetch(url, {
+            method,
             mode: 'cors',
-            body: JSON.stringify(model),
+            body: JSON.stringify(data),
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
         }).then(() => {
             fetchModel().then((response) => {
+                console.log('loaded data');
                 this.loadApp(response);
             });
         });
@@ -146,7 +166,7 @@ export default class AdressPlotComponent extends Component {
                     address: buffer.formatted_address
                 };
 
-            this.updateModel(newUser);
+            this.updateModel('/addresses/', 'POST', newUser);
 
             d.querySelector('#new-address').reset();
             d.querySelector('.google-search').value = '';
@@ -166,13 +186,28 @@ export default class AdressPlotComponent extends Component {
         });
     }
 
-    setEditView() {
-        this.setState({
-            inView: 'user-edit-focussed'
+    setEditView(e) {
+        //refactor
+        const googleSearch = document.querySelector('.google-search');
+        document.querySelector('#edit-address #user-address').parentElement.appendChild(googleSearch);
+
+        let p = new Promise(resolve => {
+            resolve(this.state.users.filter(x => x.id == e.target.id))
+        });
+
+        p.then((data) => {
+            this.setState({
+                inView: 'user-edit-focussed',
+                inEdit: data
+            });
         });
     }
 
     setUserView() {
+        //refactor
+        const googleSearch = document.querySelector('.google-search');
+        document.querySelector('#user-address').parentElement.appendChild(googleSearch);
+
         this.setState({
             inView: 'user-view-focussed'
         })
@@ -201,7 +236,7 @@ export default class AdressPlotComponent extends Component {
                                 />
 
                                 <AddressList
-                                    editForm={this.editForm}
+                                    setEditView={this.setEditView}
                                     setLoc={this.selectLocation}
                                     removeAddress={this.removeAddress}
                                     users={this.state.users}
@@ -210,6 +245,9 @@ export default class AdressPlotComponent extends Component {
 
                                 <AddressEditForm
                                     modalTitle="Edit Address"
+                                    cancel={this.cancel}
+                                    submit={this.editUser}
+                                    credentials={this.state.inEdit}
                                 />
 
                             </div>

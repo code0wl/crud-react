@@ -63,9 +63,9 @@ app.post('/addresses', (req, res) => {
 
 app.put('/addresses/:id', (req, res) => {
     let
-        addressId = parseInt(req.params.id),
+        addressId = parseInt(req.params.id, 10),
         attributes = {},
-        body = _.pick(req.body, 'name'),
+        body = _.pick(req.body, 'name', 'location', 'type', 'address'),
         matched = _.find(addresses, {id: addressId});
 
     if (!matched) {
@@ -76,7 +76,19 @@ app.put('/addresses/:id', (req, res) => {
         attributes.name = body.name;
     }
 
-    _.extend(matched, attributes);
+    if (body.hasOwnProperty('location')) {
+        attributes.location = body.location;
+    }
+
+    if (body.hasOwnProperty('type')) {
+        attributes.type = body.type;
+    }
+
+    if (body.hasOwnProperty('address')) {
+        attributes.address = body.address;
+    }
+
+    matched = _.extend(matched, attributes);
     res.json(matched);
 
 });
