@@ -4,11 +4,13 @@
 #### List of urls (test with postman or chrome)
 Server starts at port 3000, can be configured in server.js
 
-GET/ http://localhost:3000/addresses
-GET/ http://localhost:3000/address/id (zerobased starting at 0)
-POST/ http://localhost:3000/addresses (creates new item(s))
-PUT/ http://localhost:3000/addresses/id (creates new item(s))
-DELETE/ http://localhost:3000/addresses/id (removes item id, has no interface can be tested with Postman)
+<ul>
+<li>GET/ http://localhost:3000/addresses</li>
+<li>GET/ http://localhost:3000/address/id (zerobased starting at 0)</li>
+<li>POST/ http://localhost:3000/addresses (creates new item(s))</li>
+<li>PUT/ http://localhost:3000/addresses/id (creates new item(s))</li>
+<li>DELETE/ http://localhost:3000/addresses/id (removes item id, has no interface can be tested with Postman)</li>
+</ul>
 
 #### Features
 - Add Address
