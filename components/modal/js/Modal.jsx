@@ -34,7 +34,6 @@ export default class AdressPlotComponent extends Component {
         this.editUser = this.editUser.bind(this);
         this.setListView = this.setListView.bind(this);
         this.setUserView = this.setUserView.bind(this);
-        this.closeDialog = this.closeDialog.bind(this);
         this.selectLocation = this.selectLocation.bind(this);
         this.submit = this.submit.bind(this);
         this.setEditView = this.setEditView.bind(this);
@@ -118,7 +117,7 @@ export default class AdressPlotComponent extends Component {
 
             d.querySelector('#edit-address').reset();
             d.querySelector('.google-search').value = '';
-            
+
         }
     };
 
@@ -157,10 +156,6 @@ export default class AdressPlotComponent extends Component {
 
     onPlacesChanged() {
         window.userLocationBuffer = this.refs.searchBox.getPlaces();
-    }
-
-    closeDialog() {
-        alert('Removes dialog, Feature not implemented yet');
     }
 
     submit(e) {
@@ -245,7 +240,6 @@ export default class AdressPlotComponent extends Component {
                                 <ModalMenu
                                     setUserView={this.setUserView}
                                     setListView={this.setListView}
-                                    closeDialog={this.closeDialog}
                                     count={this.state.users.length}
                                 />
                                 <AddressForm
