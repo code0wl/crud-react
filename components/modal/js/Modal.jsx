@@ -9,7 +9,6 @@ import AddressMap from '../../address-map/js/AddressMap';
 import ModalMenu from '../../modal-menu/js/ModalMenu';
 import '../../../styles/main';
 import 'whatwg-fetch';
-import { createStore } from 'redux';
 import '../../model/model';
 import NotificationSystem from 'react-notification-system';
 import '../css/modal';
