@@ -2,7 +2,13 @@
 <img src="demo.gif" />
 
 #### Start the project locally with
-`npm start`
+```
+npm start
+```
+
+#### Usage
+Once the server stars, head to http://localhost:3000
+You may change the express endpoints via the server.js file.
 
 #### List of urls (test with postman or chrome)
 Server starts at port 3000, can be configured in server.js
