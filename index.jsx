@@ -10,4 +10,3 @@ function initComponent() {
     const component = document.querySelector('.address-plotmap-component');
     render(<AddressPlotComponent/>, component);
 }
-

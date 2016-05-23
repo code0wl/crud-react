@@ -9,9 +9,9 @@ import AddressMap from '../../address-map/js/AddressMap';
 import ModalMenu from '../../modal-menu/js/ModalMenu';
 import '../../../styles/main';
 import 'whatwg-fetch';
+import { createStore } from 'redux';
 import '../../model/model';
 import NotificationSystem from 'react-notification-system';
-
 import '../css/modal';
 
 export default class AdressPlotComponent extends Component {
@@ -20,16 +20,20 @@ export default class AdressPlotComponent extends Component {
         super();
 
         fetchModel().then((response) => {
-            this.loadApp(response);
+            let data = loadApp(response);
+            this.setState({
+                users: data.users,
+                markers: data.markers,
+            });
         });
 
         this.state = {
             users: [],
-            inEdit: false,
             markers: [],
             inView: 'user-list-focussed',
+            inEdit: false,
             defaultCenterMap: {lat: 52.3702, lon: 4.8952}
-        };
+        }
 
         this.editUser = this.editUser.bind(this);
         this.setListView = this.setListView.bind(this);
@@ -38,27 +42,11 @@ export default class AdressPlotComponent extends Component {
         this.submit = this.submit.bind(this);
         this.setEditView = this.setEditView.bind(this);
         this.cancel = this.cancel.bind(this);
-        this.loadApp = this.loadApp.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
         this.addNotification = this.addNotification.bind(this);
         this.notificationSystem = null;
 
     };
-
-    loadApp(data) {
-        window.addressModel = data;
-
-        this.setState({
-            users: window.addressModel,
-            markers: [{
-                position: window.addressModel.reduce((acc, value, i) => {
-                    let gPos = new google.maps.LatLng(value.position.lat, value.position.lon);
-                    acc.push(gPos);
-                    return acc;
-                }, [])
-            }]
-        })
-    }
 
     addNotification() {
         this.notificationSystem.addNotification({
@@ -133,7 +121,11 @@ export default class AdressPlotComponent extends Component {
             })
         }).then(() => {
             fetchModel().then((response) => {
-                this.loadApp(response);
+                let data = loadApp(response);
+                this.setState({
+                    users: data.users,
+                    markers: data.markers,
+                });
             });
         });
     }
@@ -148,8 +140,11 @@ export default class AdressPlotComponent extends Component {
             })
         }).then(() => {
             fetchModel().then((response) => {
-                console.log('loaded data');
-                this.loadApp(response);
+                let data = loadApp(response);
+                this.setState({
+                    users: data.users,
+                    markers: data.markers,
+                });
             });
         });
     }

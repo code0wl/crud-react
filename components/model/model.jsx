@@ -1,5 +1,6 @@
 export default {
-    fetchModel: window.fetchModel
+    fetchModel: window.fetchModel,
+    loadApp: window.loadApp
 }
 
 window.fetchModel = () => {
@@ -17,3 +18,19 @@ window.fetchModel = () => {
         return response.json();
     });
 };
+
+window.loadApp = (data) => {
+
+    window.addressModel = data;
+
+    return {
+        users: window.addressModel,
+        markers: [{
+            position: window.addressModel.reduce((acc, value, i) => {
+                let gPos = new google.maps.LatLng(value.position.lat, value.position.lon);
+                acc.push(gPos);
+                return acc;
+            }, [])
+        }]
+    }
+}
