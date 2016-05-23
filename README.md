@@ -38,6 +38,10 @@ Server starts at port 3000, can be configured in server.js
 - Autosuggestion map correlation
 - Did not get to user test the UI; So, made a video of how it works
 
+#### Roadmap
+- Unit tests
+- Make as plugin for react apps
+
 ####The MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
