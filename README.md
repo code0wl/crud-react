@@ -1,3 +1,6 @@
+# Simple plot Component
+<img src="demo.gif" />
+
 #### Start the project locally with
 `npm start`
 
