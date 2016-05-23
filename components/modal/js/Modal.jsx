@@ -184,15 +184,11 @@ export default class AdressPlotComponent extends Component {
 
     cancel(e) {
         e.preventDefault();
-        this.setState({
-            inView: 'user-list-focussed'
-        });
+        this.setState({ inView: 'user-list-focussed' });
     }
 
     setListView() {
-        this.setState({
-            inView: 'user-list-focussed'
-        });
+        this.setState({ inView: 'user-list-focussed' });
     }
 
     setEditView(e) {
