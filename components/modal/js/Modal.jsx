@@ -7,10 +7,10 @@ import AddressForm from '../../address-form/js/AddressForm';
 import AddressList from '../../address-list/js/AddressList';
 import AddressMap from '../../address-map/js/AddressMap';
 import ModalMenu from '../../modal-menu/js/ModalMenu';
+import NotificationSystem from 'react-notification-system';
 import '../../../styles/main';
 import 'whatwg-fetch';
 import '../../model/model';
-import NotificationSystem from 'react-notification-system';
 import '../css/modal';
 
 export default class AdressPlotComponent extends Component {
@@ -22,7 +22,7 @@ export default class AdressPlotComponent extends Component {
             let data = loadApp(response);
             this.setState({
                 users: data.users,
-                markers: data.markers,
+                markers: data.markers
             });
         });
 
@@ -42,9 +42,7 @@ export default class AdressPlotComponent extends Component {
         this.setEditView = this.setEditView.bind(this);
         this.cancel = this.cancel.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
-        this.addNotification = this.addNotification.bind(this);
         this.notificationSystem = null;
-
     };
 
     addNotification() {

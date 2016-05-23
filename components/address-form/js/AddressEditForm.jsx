@@ -18,13 +18,13 @@ export default class AddressEditForm extends Component {
                         <div className="grid-row">
                             <div className="col-5-12--sm">
                                 <label>
-                                    <input type="text" id="user-firstname" placeholder="Firstname" required/>
+                                    <input type="text" ref="editUserFirstname" id="user-firstname" placeholder="Firstname" required/>
                                 </label>
                             </div>
                             <div className="col-1-12--sm"></div>
                             <div className="col-6-12--sm">
                                 <label>
-                                    <input type="text"  id="user-lastname" placeholder="Surname" required/>
+                                    <input type="text" ref="editUserLastname" id="user-lastname" placeholder="Surname" required/>
                                 </label>
                             </div>
                         </div>
